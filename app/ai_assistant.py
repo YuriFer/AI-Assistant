@@ -32,12 +32,18 @@ class AiAssistant(Window):
         self.textbox = tk.CTkTextbox(self, width=250)
         self.textbox.grid(row=0, column=1, padx=(20, 20), pady=(20, 0), sticky="nsew")
 
-        # create main entry and button
-        self.entry = tk.CTkEntry(self, placeholder_text="Digite a sua pergunta...", font=tk.CTkFont(size=12))
-        self.entry.grid(row=3, column=1, padx=(20, 20), pady=(20, 20), sticky="ew")
+        # create entry and button frame
+        self.entry_button_frame = tk.CTkFrame(self, corner_radius=20)
+        self.entry_button_frame.grid(row=3, column=1, padx=(20, 20), pady=(20, 10), sticky="ew")
 
-        self.main_button_1 = tk.CTkButton(master=self, fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"))
-        self.main_button_1.grid(row=3, column=1, padx=(20, 40), pady=(20, 20), sticky="e")
+        self.entry_button_frame.grid_columnconfigure(1, weight=1)
+        self.entry_button_frame.grid_columnconfigure((2, 3), weight=0)
+        # create main entry and button
+        self.entry = tk.CTkEntry(self.entry_button_frame, placeholder_text="Digite a sua pergunta...", font=tk.CTkFont(size=12))
+        self.entry.grid(row=3, column=1, padx=(20, 10), pady=(20, 20), sticky="nsew")
+
+        self.main_button_1 = tk.CTkButton(self.entry_button_frame, fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"))
+        self.main_button_1.grid(row=3, column=2, padx=(10, 20), pady=(20, 20), sticky="nsew")
 
 if __name__ == "__main__":
     app = AiAssistant()

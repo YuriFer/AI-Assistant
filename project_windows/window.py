@@ -33,4 +33,4 @@ class Window(tk.CTk):
         self.geometry(f"{dimension}+{pos_x}+{pos_y}")
     
     def change_appearance_mode_event(self, new_appearance_mode: str):
-        tk.set_appearance_mode(new_appearance_mode)
+        tk.set_appearance_mode(new_appearance_mode.split(" ")[0].lower())
