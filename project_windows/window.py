@@ -18,13 +18,6 @@ class Window(tk.CTk):
         self.width = int(dimension.split("x")[0])
         self.height = int(dimension.split("x")[1])
         self.centralize_window(dimension)
-
-
-    # def bind_widgets(self):
-    #     self.label.bind("<Button-1>", self.label_clicked)
-
-    # def label_clicked(self, event):
-    #     print("Label clicked!")
     
     def centralize_window(self, dimension):
         self.update_idletasks()

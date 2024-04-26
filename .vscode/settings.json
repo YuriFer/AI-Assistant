@@ -1,5 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "./project_windows"
+        "./project_windows",
+        "./prompts"
     ]
 }
