@@ -37,12 +37,12 @@ class AiAssistant(Window):
         self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady=(5, 15), sticky="ew")
 
         # create textbox
-        self.textbox = tk.CTkTextbox(self, width=250, wrap="word", font=tk.CTkFont(size=12))
+        self.textbox = tk.CTkTextbox(self, width=250, wrap="word", font=tk.CTkFont(size=12), border_width=2)
         self.textbox.grid(row=0, column=1, padx=(20, 20), pady=(20, 0), sticky="nsew")
         self.textbox.configure(state="disabled")
 
         # create entry and button frame
-        self.entry_button_frame = tk.CTkFrame(self, corner_radius=20)
+        self.entry_button_frame = tk.CTkFrame(self, corner_radius=20, border_width=2)
         self.entry_button_frame.grid(row=3, column=1, padx=(20, 20), pady=(20, 10), sticky="ew")
 
         self.entry_button_frame.grid_columnconfigure(1, weight=1)

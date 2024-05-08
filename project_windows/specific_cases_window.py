@@ -12,7 +12,7 @@ from dengue_api_consult import ApiRequestObject, DengueApiService
 class SpecificCasesWindow(Window):
 
     def __init__(self):
-        super().__init__(title="Casos Específicos", dimension="600x550")
+        super().__init__(title="Casos Específicos", dimension="650x550")
         
         self.resizable(False, False)
         self.cities = []
@@ -21,35 +21,35 @@ class SpecificCasesWindow(Window):
         self.frame = tk.CTkFrame(self, corner_radius=0, border_width=2)
         self.frame.grid(columnspan = 3, rowspan=4, sticky="nsew")
 
-        self.label = tk.CTkLabel(self.frame, text="Casos Específicos", font=tk.CTkFont(size=12, weight="bold"))
+        self.label = tk.CTkLabel(self.frame, text="Casos Específicos", font=tk.CTkFont(size=14, weight="bold"))
         self.label.grid(row=0, column=1, padx=20, pady=(10, 0), sticky="ew")
 
-        self.filter_label = tk.CTkLabel(self.frame, text="Filtro Cidades", font=tk.CTkFont(size=10, weight="bold"))
+        self.filter_label = tk.CTkLabel(self.frame, text="Filtro Cidades", font=tk.CTkFont(size=12, weight="bold"))
         self.filter_label.grid(row=1, column=1, padx=20, pady=(10, 0), sticky="ew")
 
-        self.city_filter = tk.CTkEntry(self.frame, font=tk.CTkFont(size=10))
+        self.city_filter = tk.CTkEntry(self.frame, font=tk.CTkFont(size=12), placeholder_text="Digite o nome da cidade...")
         self.city_filter.grid(row=2, column=1, padx=20, pady=(5, 10), sticky="ew")
         self.city_filter.bind("<KeyRelease>", self.filter_cities)
 
-        self.city_label = tk.CTkLabel(self.frame, text="Cidade:", anchor="w", font=tk.CTkFont(size=10, weight="bold"))
+        self.city_label = tk.CTkLabel(self.frame, text="Cidade:", anchor="w", font=tk.CTkFont(size=12, weight="bold"))
         self.city_label.grid(row=3, column=1, padx=20, pady=(10, 0), sticky="ew")
         
-        self.city_optionmenu = tk.CTkOptionMenu(self.frame, values=self.cities)
-        self.city_optionmenu.grid(row=4, column=1, padx=20, pady=(5, 10), sticky="ew")
+        self.city_optionmenu = tk.CTkOptionMenu(self.frame, values=self.cities, dynamic_resizing=False, width=250)
+        self.city_optionmenu.grid(row=4, column=1, padx=20, pady=(5, 10))
 
-        self.disease_label = tk.CTkLabel(self.frame, text="Arbovirose:", anchor="w", font=tk.CTkFont(size=10, weight="bold"))
+        self.disease_label = tk.CTkLabel(self.frame, text="Arbovirose:", anchor="w", font=tk.CTkFont(size=12, weight="bold"))
         self.disease_label.grid(row=5, column=1, padx=20, pady=(10, 0), sticky="ew")
 
         self.disease_optionmenu = tk.CTkOptionMenu(self.frame, values=["Dengue", "Zika", "Chikungunya"])
         self.disease_optionmenu.grid(row=6, column=1, padx=20, pady=(5, 10), sticky="ew")
 
-        self.start_week_label = tk.CTkLabel(self.frame, text="Data inicial:", anchor="w", font=tk.CTkFont(size=10, weight="bold"))
+        self.start_week_label = tk.CTkLabel(self.frame, text="Data inicial:", anchor="w", font=tk.CTkFont(size=12, weight="bold"))
         self.start_week_label.grid(row=7, column=1, padx=20, pady=(10, 0), sticky="ew")
 
         self.start_week_date = DateEntry(self.frame, font=tk.CTkFont(size=10), date_pattern="dd/mm/yyyy")
         self.start_week_date.grid(row=8, column=1, padx=20, pady=(5, 10), sticky="ew")           
 
-        self.end_week_label = tk.CTkLabel(self.frame, text="Data final:", anchor="w", font=tk.CTkFont(size=10, weight="bold"))
+        self.end_week_label = tk.CTkLabel(self.frame, text="Data final:", anchor="w", font=tk.CTkFont(size=12, weight="bold"))
         self.end_week_label.grid(row=9, column=1, padx=20, pady=(10, 0), sticky="ew")
 
         self.end_week_date = DateEntry(self.frame, font=tk.CTkFont(size=10), date_pattern="dd/mm/yyyy")
@@ -91,6 +91,7 @@ class SpecificCasesWindow(Window):
         end_week = self.date_to_week(self.end_week_date.get_date())
         year_start=self.get_year(self.start_week_date.get_date())
         year_end=self.get_year(self.end_week_date.get_date())
+        
         return city, disease, start_week, end_week, year_start, year_end
     
     def date_to_week(self, date:datetime):
