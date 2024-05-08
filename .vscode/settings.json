@@ -1,6 +1,7 @@
 {
     "python.analysis.extraPaths": [
         "./project_windows",
-        "./prompts"
+        "./prompts",
+        "./dao"
     ]
 }

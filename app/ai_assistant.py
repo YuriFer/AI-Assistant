@@ -7,6 +7,7 @@ import customtkinter as tk
 
 sys.path.append(str(pathlib.Path(__file__).parent.parent))
 sys.path.append(str(pathlib.Path(__file__).parent.parent / "prompts"))
+sys.path.append(str(pathlib.Path(__file__).parent.parent / "dao"))
 from project_windows.window import Window
 from project_windows.specific_cases_window import SpecificCasesWindow
 from service.open_ai import OpenAIService
@@ -19,7 +20,7 @@ class AiAssistant(Window):
         self.grid_columnconfigure((2, 3), weight=0)
         self.grid_rowconfigure((0, 1, 2), weight=1)
 
-        self.sidebar_frame = tk.CTkFrame(self, width=140, corner_radius=0)
+        self.sidebar_frame = tk.CTkFrame(self, width=140, corner_radius=0, border_width=2)
         self.sidebar_frame.grid(row=0, column=0, rowspan=4, sticky="nsew")
         self.sidebar_frame.grid_rowconfigure(4, weight=1)
         
