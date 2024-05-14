@@ -11,8 +11,9 @@ from dengue_api_consult import ApiRequestObject, DengueApiService
 
 class SpecificCasesWindow(Window):
 
-    def __init__(self):
+    def __init__(self, textbox:tk.CTkTextbox):
         super().__init__(title="Casos Específicos", dimension="650x550")
+        self.textbox = textbox
         
         self.resizable(False, False)
         self.cities = []
@@ -61,8 +62,6 @@ class SpecificCasesWindow(Window):
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
 
-        self.mainloop()
-
     def filter_cities(self, event):
         query = unidecode(self.city_filter.get().lower())
 
@@ -86,7 +85,7 @@ class SpecificCasesWindow(Window):
 
     def get_values(self):
         city = self.city_optionmenu.get().split(" - ")[0].strip()
-        disease = self.disease_optionmenu.get()
+        disease = self.disease_optionmenu.get().lower()
         start_week = self.date_to_week(self.start_week_date.get_date())
         end_week = self.date_to_week(self.end_week_date.get_date())
         year_start=self.get_year(self.start_week_date.get_date())

@@ -11,18 +11,12 @@ from ia_prompt import INITIAL_PROMPT
 class OpenAiRequest:
     def __init__(
         self,
-        system_prompt: str,
-        user_prompt: str,
         messages: list,
         json_mode: bool = False,
         model: str = os.getenv("OPENAI_MODEL"),
         temperature: float = 0.0,
         seed: Optional[int] = None,
     ):
-        messages = [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt},
-        ]
         self.messages = messages
         self.model = model
         self.temperature = temperature
@@ -32,23 +26,35 @@ class OpenAiRequest:
 class OpenAiResponse:
     def __init__(
             self,
-            response:str
+            ai_response:list[dict[str,str]]
     ):
-        self.response = response
+        self.ai_response = ai_response
 
 class OpenAIService:
-    def initiate_context(self, user_message: str, widget):
-        system_prompt = INITIAL_PROMPT
+    def initial_context(self, user_message: str, widget, system_prompt = INITIAL_PROMPT):
+        parameters = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_message}
+        ]
 
         openai_request = OpenAiRequest(
-            system_prompt=system_prompt,
-            user_prompt=user_message,
-            messages=[]
+            messages=parameters
+        )
+
+        response =  self.execute_call_openai(openai_request, widget)
+        parameters.append(response.ai_response[0])
+        response.ai_response = parameters
+        return response
+
+    def begin_conversation(self, messages:list[dict[str,str]], widget):
+
+        openai_request = OpenAiRequest(
+            messages=messages
         )
 
         response =  self.execute_call_openai(openai_request, widget)
         return response
-
+    
     def execute_call_openai(self, openai_request: OpenAiRequest, widget) -> OpenAiResponse:
         response_call = self.call_openai(
             openai_request.messages,
@@ -60,7 +66,7 @@ class OpenAIService:
         )
 
         get_choices = OpenAiResponse(
-            response=response_call
+            ai_response=response_call
         )
 
         return get_choices
@@ -86,7 +92,7 @@ class OpenAIService:
         :return: The response from the API.
         """
         client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-        response:str = ""
+        response_str:str = ""
 
         stream = client.chat.completions.create(
             model=model,
@@ -103,9 +109,11 @@ class OpenAIService:
         for chunk in stream:
             if chunk.choices[0].delta.content is not None:
                 if widget is not None:
-                    response += chunk.choices[0].delta.content
+                    response_str += chunk.choices[0].delta.content
                     widget.insert("end", f"{chunk.choices[0].delta.content}")
                     widget.update_idletasks()
+        
+        response = [{"role": "assistant", "content": response_str}]
         
         widget.insert("end", "\n")
         widget.configure(state="disabled")

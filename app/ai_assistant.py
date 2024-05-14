@@ -15,6 +15,7 @@ from service.open_ai import OpenAIService
 class AiAssistant(Window):
     def __init__(self):
         super().__init__(title="Principal")
+        self.messages:list[dict[str,str]] = []
         
         self.grid_columnconfigure(1, weight=1)
         self.grid_columnconfigure((2, 3), weight=0)
@@ -27,7 +28,7 @@ class AiAssistant(Window):
         self.logo_label = tk.CTkLabel(self.sidebar_frame, text="Assistente Informativo\nSobre a Dengue", font=tk.CTkFont(size=18, weight="bold"))
         self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
 
-        self.specific_cases_button = tk.CTkButton(self.sidebar_frame, text="Casos Específicos",anchor="w", font=tk.CTkFont(size=12, weight="bold"), command=SpecificCasesWindow)
+        self.specific_cases_button = tk.CTkButton(self.sidebar_frame, text="Casos Específicos",anchor="w", font=tk.CTkFont(size=12, weight="bold"), command=self.instance_window)
         self.specific_cases_button.grid(row=3, column=0, padx=20, pady=(5, 15), sticky="ew")
 
         self.appearance_mode_label = tk.CTkLabel(self.sidebar_frame, text="Tema da Tela:", anchor="w", font=tk.CTkFont(size=12, weight="bold"))
@@ -62,16 +63,20 @@ class AiAssistant(Window):
     
     def send_question(self):
         user_message = self.get_text(self.entry)
-        response = OpenAIService().initiate_context(user_message, widget=self.textbox)
+        response = None
 
-        self.response_register(user_message, response)
+        if self.messages.__len__() == 0:
+            response = OpenAIService().initial_context(user_message, widget=self.textbox)
+        else:
+            self.messages.append({"role": "user", "content": user_message})
+            response = OpenAIService().begin_conversation(self.messages, widget=self.textbox)
 
-    def response_register(self, user_message:str, response:OpenAIService):
-        response_backup = {
-            "date": datetime.datetime.now().replace(hour=0, minute=0, second=0).strftime("%d/%m/%Y"),
-            "message": user_message,
-            "response": response.response
-        }
+        for message in response.response_ai:
+            self.messages.append(message)
+        
+    def instance_window(self):
+        specific_window = SpecificCasesWindow(self.textbox)
+        specific_window.mainloop()
 
 
 if __name__ == "__main__":
