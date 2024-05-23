@@ -71,7 +71,7 @@ class AiAssistant(Window):
             self.messages.append({"role": "user", "content": user_message})
             response = OpenAIService().begin_conversation(self.messages, widget=self.textbox)
 
-        for message in response.response_ai:
+        for message in response.ai_response:
             self.messages.append(message)
         
     def instance_window(self):

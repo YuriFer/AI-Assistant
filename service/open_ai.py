@@ -15,11 +15,15 @@ class OpenAiRequest:
         json_mode: bool = False,
         model: str = os.getenv("OPENAI_MODEL"),
         temperature: float = 0.0,
+        tools: Optional[str] = None,
+        tool_choice: Optional[str] = "auto",
         seed: Optional[int] = None,
     ):
         self.messages = messages
         self.model = model
         self.temperature = temperature
+        self.tools = tools
+        self.tool_choice = tool_choice
         self.seed = seed
         self.json_mode = json_mode
 
@@ -110,6 +114,7 @@ class OpenAIService:
             if chunk.choices[0].delta.content is not None:
                 if widget is not None:
                     response_str += chunk.choices[0].delta.content
+                    print(chunk.choices[0].delta)
                     widget.insert("end", f"{chunk.choices[0].delta.content}")
                     widget.update_idletasks()
         
