@@ -5,7 +5,7 @@ import os
 
 from openai import OpenAI
 
-from ia_prompt import INITIAL_PROMPT
+from ia_prompt import INITIAL_PROMPT, TOOLS
 
 
 class OpenAiRequest:
@@ -42,7 +42,8 @@ class OpenAIService:
         ]
 
         openai_request = OpenAiRequest(
-            messages=parameters
+            messages=parameters,
+            tools=TOOLS
         )
 
         response =  self.execute_call_openai(openai_request, widget)

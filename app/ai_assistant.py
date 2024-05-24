@@ -10,7 +10,7 @@ sys.path.append(str(pathlib.Path(__file__).parent.parent / "prompts"))
 sys.path.append(str(pathlib.Path(__file__).parent.parent / "dao"))
 from project_windows.window import Window
 from project_windows.specific_cases_window import SpecificCasesWindow
-from service.open_ai import OpenAIService
+from service.open_ai import OpenAIService, OpenAiResponse
 
 class AiAssistant(Window):
     def __init__(self):
@@ -71,6 +71,9 @@ class AiAssistant(Window):
             self.messages.append({"role": "user", "content": user_message})
             response = OpenAIService().begin_conversation(self.messages, widget=self.textbox)
 
+        self.save_history(response)
+
+    def save_history(self, response:OpenAiResponse):
         for message in response.ai_response:
             self.messages.append(message)
         
