@@ -10,7 +10,7 @@ sys.path.append(str(pathlib.Path(__file__).parent.parent / "prompts"))
 sys.path.append(str(pathlib.Path(__file__).parent.parent / "dao"))
 from project_windows.window import Window
 from project_windows.specific_cases_window import SpecificCasesWindow
-from service.open_ai import OpenAIService, OpenAiResponse
+from service.open_ai import OpenAIService, OpenAiResponse, openai_request
 
 class AiAssistant(Window):
     def __init__(self):
@@ -64,14 +64,11 @@ class AiAssistant(Window):
     def send_question(self):
         user_message = self.get_text(self.entry)
         response = None
-
+    
         if self.messages.__len__() == 0:
-            response = OpenAIService().initial_context(user_message, widget=self.textbox)
-        else:
-            self.messages.append({"role": "user", "content": user_message})
-            response = OpenAIService().begin_conversation(self.messages, widget=self.textbox)
+            response = OpenAIService().execute_conversation(user_message, widget=self.textbox)
 
-        self.save_history(response)
+        #self.save_history(response)
 
     def save_history(self, response:OpenAiResponse):
         for message in response.ai_response:

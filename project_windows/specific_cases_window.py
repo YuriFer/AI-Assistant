@@ -16,8 +16,7 @@ class SpecificCasesWindow(Window):
         self.textbox = textbox
         
         self.resizable(False, False)
-        self.cities = []
-        self.load_cities(self.cities)
+        self.cities = DengueApiService.load_cities(self)
 
         self.frame = tk.CTkFrame(self, corner_radius=0, border_width=2)
         self.frame.grid(columnspan = 3, rowspan=4, sticky="nsew")
@@ -67,13 +66,6 @@ class SpecificCasesWindow(Window):
 
         filtered_cities = [city for city in self.cities if query in unidecode(city.lower())]
         self.update_optionmenu(filtered_cities)
-    
-    def load_cities(self, cities:list):
-        with open('assets\cities_data.json', 'r', encoding='utf-8-sig') as f:
-            data = json.load(f)
-
-            for city in data:
-                cities.append(f'{city["cod_municipio"]} - {city["nome_municipio"]}')
 
     def update_optionmenu(self, values):
         if self.city_filter.get() != "":
@@ -86,20 +78,12 @@ class SpecificCasesWindow(Window):
     def get_values(self):
         city = self.city_optionmenu.get().split(" - ")[0].strip()
         disease = self.disease_optionmenu.get().lower()
-        start_week = self.date_to_week(self.start_week_date.get_date())
-        end_week = self.date_to_week(self.end_week_date.get_date())
-        year_start=self.get_year(self.start_week_date.get_date())
-        year_end=self.get_year(self.end_week_date.get_date())
+        start_week = DengueApiService.date_to_week(self, date=self.start_week_date.get_date())
+        end_week = DengueApiService.date_to_week(self, date=self.end_week_date.get_date())
+        year_start= DengueApiService.get_year(self, date=self.start_week_date.get_date())
+        year_end= DengueApiService.get_year(self, date=self.end_week_date.get_date())
         
         return city, disease, start_week, end_week, year_start, year_end
-    
-    def date_to_week(self, date:datetime):
-        week = date.strftime("%U")
-        return week
-    
-    def get_year(self, date:datetime):
-        year = date.year
-        return year
     
     def call_info_api(self):
         city, disease, start_week, end_week, year_start, year_end = self.get_values()

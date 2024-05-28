@@ -1,5 +1,9 @@
 import os
 import requests
+import json
+from datetime import datetime
+
+from unidecode import unidecode
 
 
 class ApiRequestObject:
@@ -29,3 +33,33 @@ class DengueApiService:
         if response.status_code == 200:
             return response.json()
         return None
+    
+    def load_cities(self, specific_city:str = None) -> list:
+        cities = []
+        with open('assets\cities_data.json', 'r', encoding='utf-8-sig') as file:
+            data = json.load(file)
+
+            for city in data:
+                if specific_city:
+                    if unidecode(specific_city.lower()) in unidecode(city["nome_municipio"].lower()):
+                        return city["cod_municipio"]
+                cities.append(f'{city["cod_municipio"]} - {city["nome_municipio"]}')
+        return cities
+    
+    def date_to_week(self, date:datetime):
+        week = date.strftime("%U")
+        return week
+    
+    def get_year(self, date:datetime):
+        year = date.year
+        return year
+    
+    def transform_date(self, start_date:str, end_date:str):
+        start_date = datetime.strptime(start_date, "%d/%m/%Y")
+        end_date = datetime.strptime(end_date, "%d/%m/%Y") 
+
+        start_week = self.date_to_week(start_date)
+        end_week = self.date_to_week(end_date)
+        start_year = self.get_year(start_date)
+        end_year = self.get_year(end_date)
+        return start_week, end_week, start_year, end_year

@@ -2,23 +2,37 @@ from typing import Optional
 from openai import OpenAI
 import json
 import os
+import datetime
 
 from openai import OpenAI
 
-from ia_prompt import INITIAL_PROMPT, TOOLS
+from dengue_api_consult import ApiRequestObject, DengueApiService
+from ia_prompt import INITIAL_PROMPT, TOOLS, INITIAL_TOOL_PROMPT
 
-
+openai_request = None
+widget_response = None
+now = (
+    datetime.datetime.now()
+    .replace(hour=0, minute=0, second=0)
+    .strftime("%d/%m/%Y")
+)
 class OpenAiRequest:
     def __init__(
         self,
-        messages: list,
+        system_prompt: str,
+        user_prompt: str,
         json_mode: bool = False,
         model: str = os.getenv("OPENAI_MODEL"),
         temperature: float = 0.0,
         tools: Optional[str] = None,
         tool_choice: Optional[str] = "auto",
         seed: Optional[int] = None,
+        stream: bool = True
     ):
+        messages = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt}
+        ]
         self.messages = messages
         self.model = model
         self.temperature = temperature
@@ -26,66 +40,80 @@ class OpenAiRequest:
         self.tool_choice = tool_choice
         self.seed = seed
         self.json_mode = json_mode
+        self.stream = stream
+
 
 class OpenAiResponse:
     def __init__(
             self,
-            ai_response:list[dict[str,str]]
+            id: str,
+            object: str,
+            created: int,
+            model: str,
+            choices: list
     ):
-        self.ai_response = ai_response
+        self.id = id
+        self.object = object
+        self.created = created
+        self.model = model
+        self.choices = choices
 
 class OpenAIService:
-    def initial_context(self, user_message: str, widget, system_prompt = INITIAL_PROMPT):
-        parameters = [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_message}
-        ]
+    def execute_conversation(self, user_message: str, widget):
+        global openai_request, widget_response
+        widget_response = widget
 
-        openai_request = OpenAiRequest(
-            messages=parameters,
-            tools=TOOLS
-        )
+        try:
+            if openai_request:
+                user_question = {"role": "user", "content": user_message}
+                openai_request.messages.append(user_question)
+            else:
+                openai_request = OpenAiRequest(
+                    system_prompt=INITIAL_TOOL_PROMPT.format(date=now), 
+                    user_prompt=user_message, 
+                    tools=TOOLS
+                )
+                conversation_history = openai_request.messages
+            
+            response: OpenAiResponse = self.execute_call_openai(openai_request)
+            conversation_history.append(response.choices)
 
-        response =  self.execute_call_openai(openai_request, widget)
-        parameters.append(response.ai_response[0])
-        response.ai_response = parameters
-        return response
+        except Exception as e:
+            print(e)
+            response = None
 
-    def begin_conversation(self, messages:list[dict[str,str]], widget):
-
-        openai_request = OpenAiRequest(
-            messages=messages
-        )
-
-        response =  self.execute_call_openai(openai_request, widget)
-        return response
     
-    def execute_call_openai(self, openai_request: OpenAiRequest, widget) -> OpenAiResponse:
-        response_call = self.call_openai(
-            openai_request.messages,
-            openai_request.model,
-            openai_request.temperature,
-            openai_request.json_mode,
-            openai_request.seed,
-            widget
-        )
+    def execute_call_openai(self, openai_request: OpenAiRequest) -> OpenAiResponse:
+        response_call:OpenAiResponse = self.call_openai(openai_request)
 
-        get_choices = OpenAiResponse(
-            ai_response=response_call
-        )
+        message = response_call.choices
 
-        return get_choices
+        if "tool_calls" in message and message.get('tool_calls') is not None:
+            tool_name = message["tool_calls"][0].function.name
+
+            if tool_name == "SPECIFIC_SEARCH":
+                arguments = json.loads(message["tool_calls"][0].function.arguments)
+
+                dengue_api = DengueApiService()
+
+                geocode_city = dengue_api.load_cities(arguments["city"])
+                disease = arguments["disease"]
+                start_week, end_week, start_year, end_year = dengue_api.transform_date(arguments["start_date"], arguments["end_date"])
+
+                api_request = ApiRequestObject(geocode=geocode_city, week_start=start_week, week_end=end_week, year_start=start_year, year_end=end_year, disease=disease)
+                
+                dengue_api_response = dengue_api.call_dengue_api(api_request)
+
+                print(dengue_api_response)
+
+            elif tool_name == "GENERAL_SEARCH":
+                print("GENERAL_SEARCH")
+                user_question = json.loads(message["tool_calls"][0].function.arguments)
+        
+        return response_call
 
 
-    def call_openai(
-            self,
-            messages: list,
-            model: str = os.getenv("OPENAI_MODEL"),
-            temperature: float = 0.0,
-            json_mode: bool = False,
-            seed: Optional[int] = None,
-            widget=None
-    ):
+    def call_openai(self, openai_request: OpenAiRequest):
         """
         Call the OpenAI API with a list of messages and return the response.
 
@@ -97,33 +125,50 @@ class OpenAIService:
         :return: The response from the API.
         """
         client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-        response_str:str = ""
+        content:str = ""
+        arguments:str = ""
+        first_chunk = None
 
-        stream = client.chat.completions.create(
-            model=model,
-            messages=messages,
-            temperature=temperature,
-            seed=seed,
-            stream=True,
+        client_response = client.chat.completions.create(
+            model=openai_request.model,
+            messages=openai_request.messages,
+            temperature=openai_request.temperature,
+            seed=openai_request.seed,
+            tools=openai_request.tools,
+            tool_choice=openai_request.tool_choice,
+            stream=openai_request.stream
         )
 
-        widget.configure(state="normal")
+        if client_response is not None:
+            first_chunk = next(client_response)
+            for chunk in client_response:
+                content += chunk.choices[0].delta.content if chunk.choices[0].delta.content is not None else ""
+                if chunk.choices[0].delta.tool_calls is not None:
+                    arguments += chunk.choices[0].delta.tool_calls[0].function.arguments if chunk.choices[0].delta.tool_calls[0].function.arguments is not None else ""
+                if chunk.choices[0].delta.content is not None:
+                    self.show_response(chunk)
+            
+                    widget_response.insert("end", "\n")
+                    widget_response.configure(state="disabled")
 
-        widget.delete("1.0", "end")
+            first_chunk.choices[0].delta.content = content
+            first_chunk.choices[0].delta.tool_calls[0].function.arguments = arguments
 
-        for chunk in stream:
-            if chunk.choices[0].delta.content is not None:
-                if widget is not None:
-                    response_str += chunk.choices[0].delta.content
-                    print(chunk.choices[0].delta)
-                    widget.insert("end", f"{chunk.choices[0].delta.content}")
-                    widget.update_idletasks()
-        
-        response = [{"role": "assistant", "content": response_str}]
-        
-        widget.insert("end", "\n")
-        widget.configure(state="disabled")
+            response = OpenAiResponse(
+                id=first_chunk.id,
+                object=first_chunk.object,
+                created=first_chunk.created,
+                model=first_chunk.model,
+                choices=first_chunk.choices[0].delta.__dict__
+            )
+        else:
+            return None
 
-        if json_mode:
-            return json.loads(response)
         return response
+
+            
+    def show_response(self, chunk):
+        widget_response.configure(state="normal")
+        widget_response.delete("1.0", "end")
+        widget_response.insert("end", f"{chunk.choices[0].delta.content}")
+        widget_response.update_idletasks()
