@@ -76,14 +76,34 @@ class SpecificCasesWindow(Window):
         self.city_optionmenu.configure(values=self.cities)
 
     def get_values(self):
+        dengue_service = DengueApiService()
         city = self.city_optionmenu.get().split(" - ")[0].strip()
         disease = self.disease_optionmenu.get().lower()
-        start_week = DengueApiService.date_to_week(self, date=self.start_week_date.get_date())
-        end_week = DengueApiService.date_to_week(self, date=self.end_week_date.get_date())
-        year_start= DengueApiService.get_year(self, date=self.start_week_date.get_date())
-        year_end= DengueApiService.get_year(self, date=self.end_week_date.get_date())
+        start_week = dengue_service.date_to_week(self.start_week_date.get_date())
+        end_week = dengue_service.date_to_week(self.end_week_date.get_date())
+        year_start= dengue_service.get_year(self.start_week_date.get_date())
+        year_end= dengue_service.get_year(self.end_week_date.get_date())
         
         return city, disease, start_week, end_week, year_start, year_end
+    
+    def get_graph_values(self, response):
+        data = {
+            "weeks": [],
+            "cases_est": [],
+            "cases": [],
+            "population": 0
+        }
+        for line in response:
+            print(line)
+            data["weeks"].append(self.miliseconds_to_date(line["data_iniSE"]))
+            data["cases_est"].append(line["casos_est"])
+            data["cases"].append(line["casos"])
+            data["population"] = line["pop"]
+        
+        return data
+    
+    def miliseconds_to_date(self, miliseconds):
+        return datetime.fromtimestamp(miliseconds / 1000.0).strftime("%d/%m")
     
     def call_info_api(self):
         city, disease, start_week, end_week, year_start, year_end = self.get_values()
@@ -96,4 +116,8 @@ class SpecificCasesWindow(Window):
             disease=disease
         )
         response = DengueApiService().call_dengue_api(api_request)
+        print(response)
+        graph_values = self.get_graph_values(response)
+
+        print(graph_values)
         return response

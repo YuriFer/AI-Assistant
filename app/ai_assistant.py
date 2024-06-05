@@ -2,9 +2,11 @@ import datetime
 import sys
 import os
 import pathlib
+from dotenv import load_dotenv
 
 import customtkinter as tk
 
+load_dotenv()
 sys.path.append(str(pathlib.Path(__file__).parent.parent))
 sys.path.append(str(pathlib.Path(__file__).parent.parent / "prompts"))
 sys.path.append(str(pathlib.Path(__file__).parent.parent / "dao"))

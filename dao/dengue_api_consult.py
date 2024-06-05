@@ -47,7 +47,7 @@ class DengueApiService:
         return cities
     
     def date_to_week(self, date:datetime):
-        week = date.strftime("%U")
+        week = date.isocalendar()[1]
         return week
     
     def get_year(self, date:datetime):

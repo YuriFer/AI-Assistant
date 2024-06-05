@@ -1,17 +1,17 @@
 function_schemas = [
-    {
-        "name": "GENERAL_INFORMATION",
-        "description": "Informações gerais sobre a Dengue, Zika Vírus e Chikungunya. Geralmente são perguntas que o usuário pergunta sobre informações gerais dessas doenças.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "pergunta_usuario": {
-                    "type": "string",
-                    "description": "Pergunta realizada pelo usuário"
-                }
-            }
-        }
-    },
+    # {
+    #     "name": "GENERAL_INFORMATION",
+    #     "description": "Informações gerais sobre a Dengue, Zika Vírus e Chikungunya. Geralmente são perguntas que o usuário pergunta sobre informações gerais dessas doenças.",
+    #     "parameters": {
+    #         "type": "object",
+    #         "properties": {
+    #             "pergunta_usuario": {
+    #                 "type": "string",
+    #                 "description": "Pergunta realizada pelo usuário"
+    #             }
+    #         }
+    #     }
+    # },
     {
         "name": "SPECIFIC_SEARCH",
         "description": "Busca por informações sobre a Dengue, Zika Vírus ou Chikungunya em uma cidade específica do Brasil, um período específico e uma doença específica. É comum que os usuários enviem perguntas do tipo: 'Qual a situação da Dengue em <nome da cidade> entre <data inicial> e <data final>?', ou 'Quero saber a quantidade de casos de Dengue na cidade de <nome da cidade>",

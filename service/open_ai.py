@@ -106,9 +106,12 @@ class OpenAIService:
 
                 print(dengue_api_response)
 
-            elif tool_name == "GENERAL_SEARCH":
-                print("GENERAL_SEARCH")
-                user_question = json.loads(message["tool_calls"][0].function.arguments)
+            # elif tool_name == "GENERAL_SEARCH":
+            #     print("GENERAL_SEARCH")
+            #     user_question = json.loads(message["tool_calls"][0].function.arguments)
+        else:
+            print("SEM FERRAMENTA")
+            print(response_call)
         
         return response_call
 
