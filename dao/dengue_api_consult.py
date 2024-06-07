@@ -54,6 +54,9 @@ class DengueApiService:
         year = date.year
         return year
     
+    def miliseconds_to_date(self, miliseconds):
+        return datetime.fromtimestamp(miliseconds / 1000.0).strftime("%d/%m")
+    
     def transform_date(self, start_date:str, end_date:str):
         start_date = datetime.strptime(start_date, "%d/%m/%Y")
         end_date = datetime.strptime(end_date, "%d/%m/%Y") 
@@ -63,3 +66,18 @@ class DengueApiService:
         start_year = self.get_year(start_date)
         end_year = self.get_year(end_date)
         return start_week, end_week, start_year, end_year
+    
+    def manipulate_data(self, data:list):
+        final_data = []
+
+        for line in data:
+            new_data = {}
+            new_data["data_iniSE"] = self.miliseconds_to_date(line["data_iniSE"])
+            new_data["casos_est"] = line["casos_est"]
+            new_data["casos"] = line["casos"]
+            new_data["nivel"] = line["nivel"]
+            new_data["populacao"] = line["pop"]
+
+            final_data.append(new_data)
+            
+        return final_data

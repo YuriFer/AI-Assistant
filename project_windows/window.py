@@ -10,6 +10,7 @@ class Window(tk.CTk):
         super().__init__()
         self.logged_user = os.getlogin()
         self.configure_window(title, dimension)
+        self.window_exist = True
 
     def configure_window(self, title:str, dimension:str):
         self.title(f"{title} - Usuário: {self.logged_user}")
@@ -19,11 +20,11 @@ class Window(tk.CTk):
         self.height = int(dimension.split("x")[1])
         self.centralize_window(dimension)
     
-    def centralize_window(self, dimension):
+    def centralize_window(self, dimension, value:int=0):
         self.update_idletasks()
         pos_x = (self.winfo_screenwidth() // 2) - (self.width // 2)
         pos_y = (self.winfo_screenheight() // 2) - (self.height // 2)
-        self.geometry(f"{dimension}+{pos_x}+{pos_y}")
+        self.geometry(f"{dimension}+{pos_x + value}+{pos_y + value}")
     
     def change_appearance_mode_event(self, new_appearance_mode: str):
         tk.set_appearance_mode(new_appearance_mode.split(" ")[0].lower())

@@ -12,12 +12,14 @@ sys.path.append(str(pathlib.Path(__file__).parent.parent / "prompts"))
 sys.path.append(str(pathlib.Path(__file__).parent.parent / "dao"))
 from project_windows.window import Window
 from project_windows.specific_cases_window import SpecificCasesWindow
-from service.open_ai import OpenAIService, OpenAiResponse, openai_request
+from service.open_ai import OpenAIService
 
 class AiAssistant(Window):
     def __init__(self):
         super().__init__(title="Principal")
         self.messages:list[dict[str,str]] = []
+
+        self.specific_window = None
         
         self.grid_columnconfigure(1, weight=1)
         self.grid_columnconfigure((2, 3), weight=0)
@@ -58,27 +60,35 @@ class AiAssistant(Window):
         self.main_button_1 = tk.CTkButton(self.entry_button_frame, fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), text="Enviar", font=tk.CTkFont(size=12), command=self.send_question)
         self.main_button_1.grid(row=3, column=2, padx=(10, 20), pady=(20, 20), sticky="nsew")
 
+
     def get_text(self, widget):
         value = widget.get() if widget.get() else None
         widget.delete(0, "end")
         return value
     
+
     def send_question(self):
         user_message = self.get_text(self.entry)
-        response = None
     
         if self.messages.__len__() == 0:
             response = OpenAIService().execute_conversation(user_message, widget=self.textbox)
+            if response is not None:
+                self.textbox.configure(state="normal")
+                self.textbox.delete("1.0", "end")
+                self.textbox.insert("end", f"Houve um erro ao analisar a sua pergunta.\n Erro: {response}\n")
 
-        #self.save_history(response)
 
-    def save_history(self, response:OpenAiResponse):
-        for message in response.ai_response:
-            self.messages.append(message)
-        
     def instance_window(self):
-        specific_window = SpecificCasesWindow(self.textbox)
-        specific_window.mainloop()
+        if self.specific_window is None:
+            self.specific_window = SpecificCasesWindow(self.textbox)
+            self.specific_window.mainloop()
+        else:
+            if self.specific_window.window_exist:
+                self.specific_window.lift()
+            else:
+                self.specific_window = SpecificCasesWindow(self.textbox)
+                self.specific_window.mainloop()
+                
 
 
 if __name__ == "__main__":

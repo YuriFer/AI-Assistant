@@ -1,10 +1,9 @@
 import customtkinter as tk
-import json
 
-from datetime import datetime
 from unidecode import unidecode
 
 from project_windows.window import Window
+from project_windows.graph import GraphWindow
 from tkcalendar import DateEntry
 
 from dengue_api_consult import ApiRequestObject, DengueApiService
@@ -14,6 +13,9 @@ class SpecificCasesWindow(Window):
     def __init__(self, textbox:tk.CTkTextbox):
         super().__init__(title="Casos Específicos", dimension="650x550")
         self.textbox = textbox
+
+        self.graph_window = None
+        self.dengue_service = DengueApiService()
         
         self.resizable(False, False)
         self.cities = DengueApiService.load_cities(self)
@@ -61,6 +63,12 @@ class SpecificCasesWindow(Window):
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
 
+        self.protocol("WM_DELETE_WINDOW", self.on_closing)
+    
+    def on_closing(self):
+        self.window_exist = False
+        self.destroy()
+
     def filter_cities(self, event):
         query = unidecode(self.city_filter.get().lower())
 
@@ -76,17 +84,16 @@ class SpecificCasesWindow(Window):
         self.city_optionmenu.configure(values=self.cities)
 
     def get_values(self):
-        dengue_service = DengueApiService()
         city = self.city_optionmenu.get().split(" - ")[0].strip()
         disease = self.disease_optionmenu.get().lower()
-        start_week = dengue_service.date_to_week(self.start_week_date.get_date())
-        end_week = dengue_service.date_to_week(self.end_week_date.get_date())
-        year_start= dengue_service.get_year(self.start_week_date.get_date())
-        year_end= dengue_service.get_year(self.end_week_date.get_date())
+        start_week = self.dengue_service.date_to_week(self.start_week_date.get_date())
+        end_week = self.dengue_service.date_to_week(self.end_week_date.get_date())
+        year_start= self.dengue_service.get_year(self.start_week_date.get_date())
+        year_end= self.dengue_service.get_year(self.end_week_date.get_date())
         
         return city, disease, start_week, end_week, year_start, year_end
     
-    def get_graph_values(self, response):
+    def get_graph_values(self, response:list):
         data = {
             "weeks": [],
             "cases_est": [],
@@ -94,16 +101,13 @@ class SpecificCasesWindow(Window):
             "population": 0
         }
         for line in response:
-            print(line)
-            data["weeks"].append(self.miliseconds_to_date(line["data_iniSE"]))
+            data["weeks"].append(self.dengue_service.miliseconds_to_date(line["data_iniSE"]))
             data["cases_est"].append(line["casos_est"])
             data["cases"].append(line["casos"])
             data["population"] = line["pop"]
         
         return data
-    
-    def miliseconds_to_date(self, miliseconds):
-        return datetime.fromtimestamp(miliseconds / 1000.0).strftime("%d/%m")
+
     
     def call_info_api(self):
         city, disease, start_week, end_week, year_start, year_end = self.get_values()
@@ -116,8 +120,20 @@ class SpecificCasesWindow(Window):
             disease=disease
         )
         response = DengueApiService().call_dengue_api(api_request)
-        print(response)
+
         graph_values = self.get_graph_values(response)
 
-        print(graph_values)
+        if self.graph_window is None:
+            self.instance_graph(graph_values)
+        else:
+            if self.graph_window.window_exist:
+                self.graph_window.lift()
+            else:
+                self.instance_graph(graph_values)
+
         return response
+    
+    def instance_graph(self, graph_values):
+        self.graph_window = GraphWindow(graph_values)
+        self.graph_window.centralize_window("650x550", 100)
+        self.graph_window.mainloop()
