@@ -158,10 +158,12 @@ class OpenAIService:
         )
 
         if client_response is not None:
-            widget_response.configure(state="normal")
-            widget_response.delete("1.0", "end")
+            # widget_response.configure(state="normal")
+            # widget_response.delete("1.0", "end")
+            
             first_chunk = next(client_response)
-
+            widget_response.configure(state="normal")
+            widget_response.insert("end", f"Assistente informativo: ")
 
             for chunk in client_response:
                 print(chunk)
@@ -171,6 +173,7 @@ class OpenAIService:
                 if chunk.choices[0].delta.content is not None:
                     self.show_response(chunk)
             
+            widget_response.update()
             widget_response.insert("end", "\n")
             widget_response.configure(state="disabled")
 

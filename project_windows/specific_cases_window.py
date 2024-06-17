@@ -3,7 +3,7 @@ import customtkinter as tk
 from unidecode import unidecode
 
 from project_windows.window import Window
-from project_windows.graph import GraphWindow
+from project_windows.graph_window import GraphWindow
 from tkcalendar import DateEntry
 
 from dengue_api_consult import ApiRequestObject, DengueApiService
@@ -135,5 +135,5 @@ class SpecificCasesWindow(Window):
     
     def instance_graph(self, graph_values):
         self.graph_window = GraphWindow(graph_values)
-        self.graph_window.centralize_window("650x550", 100)
+        self.graph_window.centralize_window("650x550", 500)
         self.graph_window.mainloop()

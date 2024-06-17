@@ -24,7 +24,7 @@ class Window(tk.CTk):
         self.update_idletasks()
         pos_x = (self.winfo_screenwidth() // 2) - (self.width // 2)
         pos_y = (self.winfo_screenheight() // 2) - (self.height // 2)
-        self.geometry(f"{dimension}+{pos_x + value}+{pos_y + value}")
+        self.geometry(f"{dimension}+{pos_x + value}+{pos_y}")
     
     def change_appearance_mode_event(self, new_appearance_mode: str):
         tk.set_appearance_mode(new_appearance_mode.split(" ")[0].lower())

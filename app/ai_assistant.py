@@ -70,24 +70,30 @@ class AiAssistant(Window):
     def send_question(self):
         user_message = self.get_text(self.entry)
     
+        self.textbox.configure(state="normal")
+        self.textbox.insert("end", f"Usuário: {user_message}\n")
+
         if self.messages.__len__() == 0:
             response = OpenAIService().execute_conversation(user_message, widget=self.textbox)
             if response is not None:
-                self.textbox.configure(state="normal")
                 self.textbox.delete("1.0", "end")
                 self.textbox.insert("end", f"Houve um erro ao analisar a sua pergunta.\n Erro: {response}\n")
 
 
     def instance_window(self):
         if self.specific_window is None:
-            self.specific_window = SpecificCasesWindow(self.textbox)
-            self.specific_window.mainloop()
+            self.instance_specific_window()
         else:
             if self.specific_window.window_exist:
                 self.specific_window.lift()
             else:
-                self.specific_window = SpecificCasesWindow(self.textbox)
-                self.specific_window.mainloop()
+                self.instance_specific_window()
+    
+    def instance_specific_window(self):
+        self.specific_window = SpecificCasesWindow(self.textbox)
+        self.specific_window.centralize_window("650x550", -325)
+        self.specific_window.mainloop()
+
                 
 
 
