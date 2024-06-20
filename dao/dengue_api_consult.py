@@ -67,7 +67,7 @@ class DengueApiService:
         end_year = self.get_year(end_date)
         return start_week, end_week, start_year, end_year
     
-    def manipulate_data(self, data:list):
+    def manipulate_data(self, data:list, city):
         final_data = []
 
         for line in data:
@@ -77,6 +77,7 @@ class DengueApiService:
             new_data["casos"] = line["casos"]
             new_data["nivel"] = line["nivel"]
             new_data["populacao"] = line["pop"]
+            new_data["cidade"] = city
 
             final_data.append(new_data)
             

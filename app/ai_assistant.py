@@ -44,7 +44,7 @@ class AiAssistant(Window):
         # create textbox
         self.textbox = tk.CTkTextbox(self, width=250, wrap="word", font=tk.CTkFont(size=12), border_width=2)
         self.textbox.grid(row=0, column=1, padx=(20, 20), pady=(20, 0), sticky="nsew")
-        self.textbox.configure(state="disabled")
+        #self.textbox.configure(state="disabled")
 
         # create entry and button frame
         self.entry_button_frame = tk.CTkFrame(self, corner_radius=20, border_width=2)
@@ -59,6 +59,7 @@ class AiAssistant(Window):
 
         self.main_button_1 = tk.CTkButton(self.entry_button_frame, fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), text="Enviar", font=tk.CTkFont(size=12), command=self.send_question)
         self.main_button_1.grid(row=3, column=2, padx=(10, 20), pady=(20, 20), sticky="nsew")
+        self.main_button_1.bind('<Return>', self.send_question)
 
 
     def get_text(self, widget):
@@ -77,7 +78,7 @@ class AiAssistant(Window):
             response = OpenAIService().execute_conversation(user_message, widget=self.textbox)
             if response is not None:
                 self.textbox.delete("1.0", "end")
-                self.textbox.insert("end", f"Houve um erro ao analisar a sua pergunta.\n Erro: {response}\n")
+                self.textbox.insert("end", f"Houve um erro ao analisar a sua pergunta. Por favor, refaça sua pergunta...\n")
 
 
     def instance_window(self):
