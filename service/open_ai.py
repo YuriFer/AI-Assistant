@@ -77,7 +77,7 @@ class OpenAIService:
             
             response: OpenAiResponse = self.execute_call_openai(openai_request, user_message)
             openai_request.messages.append(response.choices)
-            print(openai_request.messages)
+            #print(openai_request.messages)
 
         except Exception as exception:
             return exception
@@ -101,16 +101,12 @@ class OpenAIService:
                 geocode_city = dengue_api.load_cities(arguments["city"])
                 disease = arguments["disease"]
                 start_week, end_week, start_year, end_year = dengue_api.transform_date(arguments["start_date"], arguments["end_date"])
-                print(geocode_city, disease, start_week, end_week, start_year, end_year)
 
                 api_request = ApiRequestObject(geocode=geocode_city, week_start=start_week, week_end=end_week, year_start=start_year, year_end=end_year, disease=disease)
                 
                 dengue_api_response = dengue_api.call_dengue_api(api_request)
-                print(dengue_api_response)
 
                 json_data = dengue_api.manipulate_data(dengue_api_response, arguments["city"])
-
-                print("TESTE --->>",json_data)
 
                 analysis_openai_request = OpenAiRequest(
                     system_prompt=SPECIFIC_SEARCH_PROMPT.format(dados_json=json_data), 
@@ -170,7 +166,6 @@ class OpenAIService:
                 widget_response.insert("end", f"\nAssistente informativo: ")
 
             for chunk in client_response:
-                print(chunk)
                 content += chunk.choices[0].delta.content if chunk.choices[0].delta.content is not None else ""
                 if chunk.choices[0].delta.tool_calls is not None:
                     arguments += chunk.choices[0].delta.tool_calls[0].function.arguments if chunk.choices[0].delta.tool_calls[0].function.arguments is not None else ""
@@ -183,6 +178,7 @@ class OpenAIService:
             #widget_response.configure(state="disabled")
 
             first_chunk.choices[0].delta.content = content
+            print(content)
             if first_chunk.choices[0].delta.tool_calls is not None:
                 first_chunk.choices[0].delta.tool_calls[0].function.arguments = arguments
 

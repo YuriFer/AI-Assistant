@@ -1,0 +1,69 @@
+A Dengue é uma doença viral transmitida pela picada do mosquito Aedes aegypti. Os sintomas incluem febre alta, dor de cabeça, dores musculares e articulares, além de manchas vermelhas na pele. Em casos mais graves, pode levar à dengue grave, com risco de vida. A prevenção envolve eliminar criadouros do mosquito, como recipientes com água parada, e usar repelentes e roupas que cubram a pele. Não há vacina disponível. Em caso de suspeita, é importante procurar um serviço de saúde.
+Tempo para a resposta da pergunta 'O que é Dengue?': 4.397318124771118 segundos
+Response:  None
+
+Os sintomas da Dengue incluem febre alta, dor de cabeça, dores musculares e articulares, dor atrás dos olhos, fadiga, náuseas, vômitos, manchas vermelhas na pele e sangramento leve, como sangramento nasal. Em casos mais graves, a Dengue pode evoluir para a Dengue Grave, que pode causar sangramento grave, choque e até mesmo levar à morte. Se você apresentar sintomas de Dengue, é importante procurar atendimento médico imediatamente.
+Tempo para a resposta da pergunta 'Quais são os sintomas da Dengue?': 4.231887102127075 segundos
+Response:  None
+
+A Dengue é transmitida pela picada da fêmea do mosquito Aedes aegypti infectado com o vírus da Dengue. Esse mosquito se reproduz em locais com água parada, como vasos de plantas, pneus, caixas dágua, entre outros. A transmissão 
+ocorre durante o dia, principalmente nas primeiras horas da manhã e no final da tarde.
+Tempo para a resposta da pergunta 'Como é transmitida a Dengue?': 3.7825491428375244 segundos
+Response:  None
+
+Sim, existe uma vacina contra a Dengue, chamada de Dengvaxia. No entanto, a vacinação contra a Dengue é recomendada apenas para pessoas que já tiveram a doença anteriormente, pois estudos mostraram que a vacina pode aumentar o risco de formas graves da doença em pessoas que nunca foram infectadas pelo vírus anteriormente. Portanto, é importante consultar um profissional de saúde para avaliar se a vacina é indicada para o seu caso específico. Além da vacinação, a prevenção da Dengue envolve medidas como eliminar criadouros do mosquito Aedes aegypti, usar repelentes, telas de proteção e roupas adequadas, entre outras ações.
+Tempo para a resposta da pergunta 'Existe vacina para Dengue?': 4.539872646331787 segundos
+Response:  None
+
+Para prevenir a Dengue, é importante adotar as seguintes medidas:
+
+1. Eliminar recipientes que possam acumular água parada, como pneus, garrafas, vasos de plantas, entre outros, pois são locais propícios para a reprodução do mosquito Aedes aegypti, transmissor da Dengue.
+
+2. Manter caixas dágua, piscinas e outros reservatórios de água devidamente tampados.
+
+3. Limpar regularmente calhas, ralos e outros locais que possam acumular água.
+
+4. Utilizar telas de proteção em janelas e portas para impedir a entrada do mosquito.
+
+5. Utilizar repelentes e inseticidas, seguindo as orientações do fabricante.
+
+6. Usar roupas que cubram a maior parte do corpo, principalmente em áreas de maior incidência da doença.
+
+7. Evitar o acúmulo de lixo e entulho, que podem se tornar criadouros do mosquito.
+
+Seguindo essas medidas de prevenção, é possível reduzir o risco de contrair Dengue. Em caso de sintomas como febre alta, dor de cabeça, dor atrás dos olhos, dores musculares e articulares, é importante procurar um serviço de saúde para diagnóstico e tratamento adequados.
+Tempo para a resposta da pergunta 'Como prevenir a Dengue?': 6.323089838027954 segundos
+Response:  None
+
+O Zika vírus é uma doença viral transmitida principalmente pela picada do mosquito Aedes aegypti. Os sintomas mais comuns incluem febre baixa, erupção cutânea, dores musculares e articulares, conjuntivite e dor de cabeça. Em casos raros, o Zika vírus pode estar associado a complicações neurológicas, como a Síndrome de Guillain-Barré em adultos e microcefalia em bebês de mães infectadas durante a gravidez. A prevenção do Zika vírus envolve o controle do mosquito vetor, uso de repelentes, telas de proteção e eliminação de criadouros de mosquitos. Em caso de suspeita de infecção, é importante procurar orientação médica.
+Tempo para a resposta da pergunta 'O que é Zika?': 5.012782335281372 segundos
+Response:  None
+
+Os sintomas da Zika incluem febre baixa, erupção cutânea, dores musculares e articulares, conjuntivite não purulenta, dor de cabeça e dor nas costas. Geralmente, os sintomas são leves e duram de 2 a 7 dias. Em alguns casos, a infecção por Zika pode estar associada a complicações neurológicas, como a Síndrome de Guillain-Barré em adultos e microcefalia em bebês de mães infectadas durante a gravidez. Se você apresentar sintomas de Zika, é importante procurar um médico para um diagnóstico adequado e orientações sobre o tratamento.
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika?': 4.32430624961853 segundos
+Response:  None
+
+A Zika é transmitida principalmente pela picada do mosquito Aedes aegypti infectado. Também pode ocorrer transmissão por via sexual, transfusão sanguínea e da mãe para o feto durante a gravidez. É importante adotar medidas de prevenção, como o uso de repelentes, telas de proteção, roupas que cubram a maior parte do corpo e eliminação de criadouros do mosquito. Em caso de suspeita de infecção, é fundamental buscar orientação médica.
+Tempo para a resposta da pergunta 'Como é transmitida a Zika?': 4.433218240737915 segundos
+Response:  None
+
+Atualmente, não existe vacina disponível para prevenir a infecção pelo Zika Vírus. A prevenção da Zika é feita principalmente através do controle do mosquito Aedes aegypti, que também transmite a Dengue e a Chikungunya. Medidas como eliminar criadouros do mosquito, usar repelentes, telas de proteção e roupas que cubram a maior parte do corpo são importantes para evitar a picada do mosquito e a transmissão da doença. Em caso de dúvidas ou sintomas, é importante procurar um profissional de saúde para orientações adequadas.
+Tempo para a resposta da pergunta 'Existe vacina para Zika?': 4.7403035163879395 segundos
+Response:  None
+
+A prevenção da Zika Vírus envolve principalmente a eliminação dos criadouros do mosquito Aedes aegypti, que também transmite a Dengue e a Chikungunya. Algumas medidas importantes são:
+
+1. Eliminar recipientes que possam acumular água parada, como pneus, garrafas, vasos de plantas, entre outros.
+2. Manter caixas dágua, piscinas e outros reservatórios de água sempre tampados.
+3. Limpar regularmente calhas e ralos para evitar acúmulo de água.
+4. Utilizar telas de proteção em janelas e portas.
+5. Utilizar repelentes corporais, principalmente durante o dia.
+6. Utilizar roupas que cubram a maior parte do corpo, principalmente em áreas de maior incidência do mosquito.
+7. Evitar viajar para áreas com surtos de Zika Vírus, principalmente durante a gravidez.
+
+É importante ressaltar que a prevenção da Zika Vírus está diretamente relacionada à prevenção da proliferação do mosquito Aedes aegypti. Portanto, medidas para evitar a reprodução do mosquito são essenciais para prevenir não só a Zika, mas também a Dengue e a Chikungunya.
+Tempo para a resposta da pergunta 'Como prevenir a Zika?': 7.081364154815674 segundos
+Response:  None
+
+Desculpe, não encontrei dados disponíveis para a cidade de Araguari no período mencionado. Posso te ajudar com outra pergunta relacionada a Dengue, Zika Vírus ou Chikungunya?
+Tempo para a resposta da pergunta 'Qual foi a quantidade de casos de Dengue em Araguari entre 01/01/2023 e 01/02/2023?': 4.322811603546143 segundos

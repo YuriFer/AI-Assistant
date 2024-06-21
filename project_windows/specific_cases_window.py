@@ -101,7 +101,7 @@ class SpecificCasesWindow(Window):
             "population": 0
         }
         for line in response:
-            data["weeks"].append(self.dengue_service.miliseconds_to_date(line["data_iniSE"]))
+            data["weeks"].append(self.dengue_service.miliseconds_to_date(line["data_iniSE"])[:5])
             data["cases_est"].append(line["casos_est"])
             data["cases"].append(line["casos"])
             data["population"] = line["pop"]

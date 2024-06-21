@@ -55,7 +55,7 @@ class DengueApiService:
         return year
     
     def miliseconds_to_date(self, miliseconds):
-        return datetime.fromtimestamp(miliseconds / 1000.0).strftime("%d/%m")
+        return datetime.fromtimestamp(miliseconds / 1000.0).strftime("%d/%m/%Y")
     
     def transform_date(self, start_date:str, end_date:str):
         start_date = datetime.strptime(start_date, "%d/%m/%Y")
