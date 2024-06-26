@@ -4,7 +4,7 @@ from unidecode import unidecode
 
 from project_windows.window import Window
 from project_windows.graph_window import GraphWindow
-from tkcalendar import DateEntry
+from project_windows.date_entry import MyDateEntry as DateEntry
 
 from dengue_api_consult import ApiRequestObject, DengueApiService
 
@@ -48,8 +48,8 @@ class SpecificCasesWindow(Window):
         self.start_week_label = tk.CTkLabel(self.frame, text="Data inicial:", anchor="w", font=tk.CTkFont(size=12, weight="bold"))
         self.start_week_label.grid(row=7, column=1, padx=20, pady=(10, 0), sticky="ew")
 
-        self.start_week_date = DateEntry(self.frame, font=tk.CTkFont(size=10), date_pattern="dd/mm/yyyy")
-        self.start_week_date.grid(row=8, column=1, padx=20, pady=(5, 10), sticky="ew")           
+        self.start_week_date = DateEntry(self.frame, font=tk.CTkFont(size=10), date_pattern="dd/mm/yyyy", dropdown=True)
+        self.start_week_date.grid(row=8, column=1, padx=20, pady=(5, 10), sticky="ew")
 
         self.end_week_label = tk.CTkLabel(self.frame, text="Data final:", anchor="w", font=tk.CTkFont(size=12, weight="bold"))
         self.end_week_label.grid(row=9, column=1, padx=20, pady=(10, 0), sticky="ew")

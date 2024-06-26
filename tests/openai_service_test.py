@@ -19,10 +19,11 @@ class TestOpenAIService(unittest.TestCase):
         self.service = OpenAIService()
 
     def test_execute_conversation(self):
-        questions = ["Qual foi a quantidade de casos de Dengue em Araguari no periodo 01/01/2023 e 01/02/2023?",]
+        tempo_total = 0
+        question = "Como é trasmitida a Dengue?"
         widget = Mock()
         times = []
-        for question in questions:
+        for vezes in range(30):
             start_time = time.time()
             response = self.service.execute_conversation(question, widget)
             end_time = time.time()
@@ -32,15 +33,11 @@ class TestOpenAIService(unittest.TestCase):
 
             print(f"Tempo para a resposta da pergunta '{question}': {elapsed_time} segundos")
 
-            print("Response: ", response)
             self.assertIsNone(response)
+            tempo_total += elapsed_time
 
-        plt.bar(questions, times)
-        plt.xlabel('Perguntas')
-        plt.ylabel('Tempo (segundos)')
-        plt.title('Tempo para cada pergunta')
-        plt.xticks(rotation=90)
-        plt.show()
+        print(f"Tempo médio para a resposta da pergunta '{question}': {tempo_total/30} segundos")
+            
 
 if __name__ == '__main__':
     unittest.main()

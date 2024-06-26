@@ -101,12 +101,17 @@ class OpenAIService:
                 geocode_city = dengue_api.load_cities(arguments["city"])
                 disease = arguments["disease"]
                 start_week, end_week, start_year, end_year = dengue_api.transform_date(arguments["start_date"], arguments["end_date"])
+                print(start_week, end_week, start_year, end_year, disease, geocode_city, arguments["city"])
 
                 api_request = ApiRequestObject(geocode=geocode_city, week_start=start_week, week_end=end_week, year_start=start_year, year_end=end_year, disease=disease)
                 
                 dengue_api_response = dengue_api.call_dengue_api(api_request)
 
+                print("RESPONSE CRUA>>>>>>>>>>>>>>>>>>>",dengue_api_response)
+
                 json_data = dengue_api.manipulate_data(dengue_api_response, arguments["city"])
+
+                print("RESPONSE TRATADA------------------",json_data)
 
                 analysis_openai_request = OpenAiRequest(
                     system_prompt=SPECIFIC_SEARCH_PROMPT.format(dados_json=json_data), 
@@ -178,7 +183,7 @@ class OpenAIService:
             #widget_response.configure(state="disabled")
 
             first_chunk.choices[0].delta.content = content
-            print(content)
+            #print(content)
             if first_chunk.choices[0].delta.tool_calls is not None:
                 first_chunk.choices[0].delta.tool_calls[0].function.arguments = arguments
 

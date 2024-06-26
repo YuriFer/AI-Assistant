@@ -13,6 +13,7 @@ sys.path.append(str(pathlib.Path(__file__).parent.parent / "dao"))
 from project_windows.window import Window
 from project_windows.specific_cases_window import SpecificCasesWindow
 from service.open_ai import OpenAIService
+from prompts.ia_prompt import INITIAL_TEXT
 
 class AiAssistant(Window):
     def __init__(self):
@@ -42,8 +43,9 @@ class AiAssistant(Window):
         self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady=(5, 15), sticky="ew")
 
         # create textbox
-        self.textbox = tk.CTkTextbox(self, width=250, wrap="word", font=tk.CTkFont(size=12), border_width=2)
+        self.textbox = tk.CTkTextbox(self, width=250, wrap="word", font=tk.CTkFont(size=14), border_width=2)
         self.textbox.grid(row=0, column=1, padx=(20, 20), pady=(20, 0), sticky="nsew")
+        self.textbox.insert("end", INITIAL_TEXT)
         #self.textbox.configure(state="disabled")
 
         # create entry and button frame
@@ -72,6 +74,7 @@ class AiAssistant(Window):
         user_message = self.get_text(self.entry)
     
         self.textbox.configure(state="normal")
+        self.textbox.delete("1.0", "end")
         self.textbox.insert("end", f"Usuário: {user_message}\n")
 
         if self.messages.__len__() == 0:
