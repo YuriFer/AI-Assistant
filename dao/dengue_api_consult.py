@@ -41,7 +41,7 @@ class DengueApiService:
 
             for city in data:
                 if specific_city:
-                    if unidecode(specific_city.lower()) in unidecode(city["nome_municipio"].lower()):
+                    if unidecode(city["nome_municipio"].lower().replace(" ", "")) == unidecode(specific_city.lower().replace(" ", "")):
                         return city["cod_municipio"]
                 cities.append(f'{city["cod_municipio"]} - {city["nome_municipio"]}')
         return cities
