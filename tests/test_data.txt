@@ -1,0 +1,178 @@
+
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 6.414612293243408 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 6.590657711029053 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 5.603914499282837 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 4.436958074569702 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 5.514447927474976 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 5.044651508331299 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 6.900365829467773 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 6.9874327182769775 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 7.057968854904175 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 4.834683656692505 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 7.069782257080078 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 6.248450517654419 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 7.9359636306762695 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 5.554373264312744 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 7.313430309295654 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 8.669334173202515 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 5.324211359024048 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 7.128073453903198 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 8.13647747039795 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 5.9243316650390625 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 6.62011194229126 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 5.365920543670654 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 7.331634044647217 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 7.7207043170928955 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 6.493405342102051 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 5.705491542816162 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 6.631873369216919 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 6.342539072036743 segundos
+Tempo para a resposta da pergunta 'Como previnir a Dengue?': 8.45716667175293 segundos
+Tempo médio para a resposta da pergunta 'Como previnir a Dengue?': 6.618024984995524 segundos
+.
+----------------------------------------------------------------------
+Ran 1 test in 198.560s
+
+
+
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 5.806774377822876 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 4.169537782669067 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 5.5147385597229 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 4.345069646835327 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 4.280670642852783 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 4.219451189041138 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 5.210600852966309 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 6.4286439418792725 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 5.3183488845825195 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 3.9588263034820557 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 5.515554189682007 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 6.805976390838623 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 5.800034999847412 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 4.3601720333099365 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 5.304391145706177 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 4.888747930526733 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 5.226071119308472 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 5.205626726150513 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 4.894325494766235 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 6.381439924240112 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 5.743786811828613 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 4.515719890594482 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 6.47913932800293 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 4.56525731086731 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 6.393680572509766 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 5.1344358921051025 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 7.488694429397583 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 4.845653533935547 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 5.459897994995117 segundos
+Tempo para a resposta da pergunta 'O que é Zika Virus?': 5.204951286315918 segundos
+Tempo médio para a resposta da pergunta 'O que é Zika Virus?': 5.315540639559428 segundos
+.
+----------------------------------------------------------------------
+Ran 1 test in 159.483s
+
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 5.273799657821655 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 4.791396856307983 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 5.556053161621094 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 3.2065396308898926 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 3.1928114891052246 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 5.406900405883789 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 3.31799054145813 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 2.928731918334961 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 3.465677261352539 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 4.880507469177246 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 3.0637710094451904 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 6.114767551422119 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 5.004623889923096 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 5.183523654937744 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 5.022718191146851 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 3.2158021926879883 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 3.8035378456115723 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 3.9482126235961914 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 5.315674066543579 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 5.259840488433838 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 5.03816032409668 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 5.142577409744263 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 3.676346778869629 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 3.6501553058624268 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 4.585503339767456 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 5.026716232299805 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 3.6185173988342285 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 3.404665470123291 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 6.007648944854736 segundos
+Tempo para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 5.128077507019043 segundos
+Tempo médio para a resposta da pergunta 'Quais são os sintomas da Zika Virus?': 4.441041620572408 segundos
+.
+----------------------------------------------------------------------
+Ran 1 test in 133.239s
+
+
+
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 4.570667028427124 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 5.389696359634399 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 4.135343074798584 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 3.5933351516723633 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 4.391958475112915 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 3.9877841472625732 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 5.088666677474976 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 5.009777307510376 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 3.637869358062744 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 3.7735531330108643 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 4.311994552612305 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 5.467212677001953 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 3.6620755195617676 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 4.316454172134399 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 3.2123258113861084 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 7.635782957077026 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 4.805532932281494 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 4.161977767944336 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 3.695246934890747 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 5.043706178665161 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 5.210421085357666 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 3.400059461593628 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 4.809604167938232 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 5.257347583770752 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 5.2903807163238525 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 4.426314353942871 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 3.959033727645874 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 5.578815221786499 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 5.305534362792969 segundos
+Tempo para a resposta da pergunta 'Existe vacina para a Dengue?': 4.457653999328613 segundos
+Tempo médio para a resposta da pergunta 'Existe vacina para a Dengue?': 4.586204163233439 segundos
+.
+----------------------------------------------------------------------
+Ran 1 test in 137.593s
+
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 3.309519052505493 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.355147123336792 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.8753268718719482 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 3.891481399536133 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.42099928855896 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.4545979499816895 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.235713243484497 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.533500909805298 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.5717906951904297 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.2725799083709717 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.1042089462280273 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.2283360958099365 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.1090338230133057 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.191922187805176 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 3.188730001449585 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.164379119873047 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.3395118713378906 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.257425546646118 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.6298775672912598 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.784128427505493 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 3.794110059738159 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.9288651943206787 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.4372682571411133 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.564953327178955 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.785763740539551 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.2599058151245117 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.6253583431243896 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.2860209941864014 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.392726182937622 segundos
+Tempo para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.6464691162109375 segundos
+Tempo médio para a resposta da pergunta 'Como é trasmitida a Dengue?': 2.5879883686701457 segundos
+.
+----------------------------------------------------------------------
+Ran 1 test in 77.651s
